@@ -208,6 +208,19 @@ a { color: var(--azul-600); }
 .vazio h3 { margin: 0 0 6px; color: var(--azul-900); }
 .vazio p { margin: 0; color: var(--texto-2); }
 
+/* Páginas de texto (Sobre Nós) */
+.pagina-texto { max-width: 760px; margin: 0 auto; padding: 40px 44px; }
+.pagina-texto h1 { margin: 0 0 20px; font-size: clamp(28px, 4vw, 38px); color: var(--azul-900); letter-spacing: -.02em; }
+.pagina-texto h2 { margin: 32px 0 8px; font-size: 19px; color: var(--azul-700); }
+.pagina-texto p { margin: 0 0 14px; color: var(--texto-2); font-size: 16px; line-height: 1.7; }
+.pagina-texto .destaque { color: var(--texto); font-size: 18px; }
+.etiquetas { list-style: none; padding: 0; margin: 4px 0 24px; display: flex; flex-wrap: wrap; gap: 8px; }
+.etiquetas li {
+  background: var(--azul-100); color: var(--azul-800); font-weight: 700; font-size: 14px;
+  padding: 8px 14px; border-radius: 99px;
+}
+.rodape a[aria-current="page"] { text-decoration: underline; }
+
 /* Rodapé */
 .rodape { background: var(--azul-900); color: var(--azul-300); font-size: 13px; }
 .rodape-inner {
