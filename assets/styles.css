@@ -158,6 +158,11 @@ a { color: var(--azul-600); }
 .interruptor input { width: 20px; height: 20px; accent-color: var(--azul-600); }
 .zona-perigo { border-top: 1px solid var(--linha); margin-top: 28px; padding-top: 20px; text-align: center; }
 
+/* Registo concluído sem a nossa API (só no Escafandro) */
+.obrigado { text-align: center; padding: 24px 8px; outline: none; }
+.obrigado h2 { margin: 0 0 8px; }
+.obrigado p { margin: 0; color: var(--texto-2); }
+
 /* Ofertas */
 .ofertas-topo { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; margin-bottom: 20px; }
 .ola { margin: 0; font-size: clamp(26px, 3.4vw, 34px); color: var(--azul-900); letter-spacing: -.02em; }

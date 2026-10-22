@@ -24,17 +24,17 @@
     try {
       r = await fetch(`${API}/api${caminho}`, { method: metodo, headers, body: corpo ? JSON.stringify(corpo) : undefined });
     } catch (e) {
-      throw new Error('Sem ligação. Verifica a tua internet e tenta novamente.');
+      throw Object.assign(new Error('Sem ligação. Verifica a tua internet e tenta novamente.'), { estado: 0 });
     }
     const dados = await r.json().catch(() => ({}));
     if (r.status === 401 && t) { sessao.limpar(); perfil = null; mostrar('entrar'); }
-    if (!r.ok) throw new Error(dados.erro || 'Ocorreu um erro. Tenta novamente.');
+    if (!r.ok) throw Object.assign(new Error(dados.erro || 'Ocorreu um erro. Tenta novamente.'), { estado: r.status });
     return dados;
   }
 
   // ---------- Validação (a API valida tudo outra vez) ----------
   const limparTel = t => (t || '').replace(/[\s-]/g, '').replace(/^(\+351|00351)/, '');
-  const telValido = t => /^(9[1236]\d{7}|2\d{8})$/.test(limparTel(t));
+  const telValido = t => /^9\d{8}$/.test(limparTel(t));
   const emailValido = e => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test((e || '').trim());
   const cpValido = cp => /^\d{4}-\d{3}$/.test(cp || '');
   function idade(dataStr) {
@@ -56,7 +56,7 @@
   function mostrarErro(el, msg) { el.textContent = msg || ''; el.hidden = !msg; }
   async function aEnviar(form, fn) {
     const b = $('button[type=submit]', form), txt = b.textContent;
-    b.disabled = true; b.textContent = 'Um momento…';
+    b.disabled = true; b.textContent = 'A enviar…';
     try { await fn(); } finally { b.disabled = false; b.textContent = txt; }
   }
 
@@ -140,6 +140,19 @@
   formatarCP(fReg.cp);
   $$('input, select', fReg).forEach(i => i.addEventListener('input', () => marcar(i, false)));
 
+  let registoEmCurso = false;
+
+  // Sem a nossa API, o registo fica só no Escafandro: agradece e explica o que vem a seguir.
+  function mostrarObrigado(nome) {
+    const ok = document.createElement('div'), h = document.createElement('h2'), p = document.createElement('p');
+    ok.className = 'obrigado'; ok.setAttribute('role', 'status'); ok.tabIndex = -1;
+    h.textContent = 'Perfil criado';
+    p.textContent = `Obrigado, ${nome}. Vais começar a receber ofertas.`;
+    ok.append(h, p);
+    $('#cartaoRegisto').replaceChildren(ok);
+    ok.focus();
+  }
+
   fReg.addEventListener('submit', e => {
     e.preventDefault();
     const f = fReg, erros = [];
@@ -150,7 +163,7 @@
     verif(f.genero, f.genero.value, 'Escolhe o género.');
     const anos = idade(f.nascimento.value);
     verif(f.nascimento, anos >= 18, anos < 0 ? 'Indica a data de nascimento.' : 'Tens de ter mais de 18 anos.');
-    verif(f.telefone, telValido(f.telefone.value), 'O telefone não é válido.');
+    verif(f.telefone, telValido(f.telefone.value), 'Telefone inválido (9XX XXX XXX).');
     verif(f.cp, cpValido(f.cp.value), 'O código postal não é válido (ex.: 1000-001).');
     verif(f.email, emailValido(f.email.value), 'O email não é válido.');
     $('#campoCategorias').classList.toggle('invalido', !cats.length);
@@ -159,6 +172,8 @@
     if (erros.length) return mostrarErro($('#erroRegisto'), erros[0]);
     mostrarErro($('#erroRegisto'), '');
 
+    if (registoEmCurso) return; // duplo clique
+    registoEmCurso = true;
     aEnviar(f, async () => {
       try {
         const r = await api('POST', '/registo', {
@@ -166,9 +181,17 @@
           telefone: f.telefone.value, cp: f.cp.value, email: f.email.value, categorias: cats,
           consentimento: f.consentimento.checked, parceiros: f.parceiros.checked
         });
+        // registo aceite: a lead segue para o Escafandro (keepalive: não se perde ao mudar de vista)
+        enviarLead(f, cats);
         fReg.reset(); seletorReg.set([]);
         mostrar('entrar', { email: r.email, novo: true });
-      } catch (err) { mostrarErro($('#erroRegisto'), err.message); }
+      } catch (err) {
+        // erro nos dados (ex.: email já registado): não envia a lead
+        if (err.estado >= 400 && err.estado < 500) return mostrarErro($('#erroRegisto'), err.message);
+        // a nossa API não está disponível: a lead fica registada no Escafandro na mesma
+        if (await enviarLead(f, cats)) return mostrarObrigado(f.nome.value.trim());
+        mostrarErro($('#erroRegisto'), 'Não foi possível enviar. Tenta novamente dentro de instantes.');
+      } finally { registoEmCurso = false; }
     });
   });
 
