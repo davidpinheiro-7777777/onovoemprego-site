@@ -237,7 +237,6 @@ a { color: var(--azul-600); }
 /* Modal parceiros */
 .modal { position: fixed; inset: 0; background: rgba(10, 34, 64, .55); display: grid; place-items: center; padding: 16px; z-index: 50; }
 .modal-caixa { position: relative; width: min(760px, 100%); height: min(640px, 90vh); background: #fff; border-radius: 18px; overflow: hidden; padding-top: 52px; }
-.modal-caixa iframe { width: 100%; height: 100%; border: 0; }
 .modal-fechar {
   position: absolute; top: 10px; right: 10px; width: 36px; height: 36px; border-radius: 50%;
   border: 0; background: var(--azul-900); color: #fff; font-size: 22px; line-height: 1; cursor: pointer; z-index: 1;
@@ -271,3 +270,34 @@ a { color: var(--azul-600); }
 .politica a { color: var(--azul-600); font-weight: 600; }
 .lista-colunas { columns: 2; column-gap: 32px; }
 @media (max-width: 560px) { .lista-colunas { columns: 1; } }
+
+/* Escolha das empresas parceiras (parceiros.js) */
+.modal-caixa.parceiros {
+  height: auto; max-height: 90vh; padding: 28px 24px 20px; overflow: hidden;
+  display: flex; flex-direction: column; gap: 10px; width: min(640px, 100%);
+}
+.parceiros h2 { margin: 0 40px 0 0; font-size: 17px; line-height: 1.35; color: var(--azul-900); text-transform: uppercase; letter-spacing: .02em; }
+.parceiros-ajuda { margin: 0; font-size: 13px; color: var(--texto-2); }
+.parceiros-arvore { overflow-y: auto; border: 1px solid var(--linha); border-radius: 12px; padding: 6px 10px; min-height: 120px; }
+.parc-estado { margin: 16px 6px; color: var(--texto-2); font-size: 14px; }
+.parc-linha { display: flex; align-items: center; gap: 8px; padding: 8px 4px; border-bottom: 1px solid var(--azul-50); }
+.parc-linha label { display: flex; align-items: center; gap: 10px; cursor: pointer; font-size: 14px; flex: 1; min-width: 0; }
+.parc-linha input { width: 18px; height: 18px; accent-color: var(--azul-600); flex: none; }
+.parc-todos { font-weight: 700; color: var(--azul-900); padding-left: 38px; cursor: pointer; font-size: 14px; }
+.parc-setor > .parc-linha label { font-weight: 600; color: var(--azul-900); }
+.parc-expandir {
+  width: 28px; height: 28px; flex: none; border: 0; border-radius: 8px; background: var(--azul-50); cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10'%3E%3Cpath d='M3 1.5 6.5 5 3 8.5' fill='none' stroke='%231d5fd6' stroke-width='1.8' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: center; transition: transform .15s;
+}
+.parc-expandir[aria-expanded="true"] { transform: rotate(90deg); }
+.parc-contagem { font-size: 12px; color: var(--texto-2); white-space: nowrap; }
+.parc-empresas { list-style: none; margin: 0 0 6px; padding: 0 0 0 36px; }
+.parc-empresas .parc-linha { padding: 6px 4px; flex-wrap: wrap; }
+.parc-empresas label { font-weight: 400; }
+.parc-politica { font-size: 12px; color: var(--azul-600); white-space: nowrap; margin-left: 28px; }
+.parceiros-ok { width: auto; min-width: 160px; align-self: center; margin-top: 4px; }
+@media (max-width: 560px) {
+  .modal-caixa.parceiros { padding: 22px 14px 16px; max-height: 94vh; }
+  .parc-empresas { padding-left: 20px; }
+}

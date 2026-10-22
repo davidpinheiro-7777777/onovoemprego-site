@@ -119,18 +119,8 @@
   document.addEventListener('click', e => {
     const n = e.target.closest('[data-nav]');
     if (n) { e.preventDefault(); mostrar(n.dataset.nav); }
-    const p = e.target.closest('[data-abrir-parceiros]');
-    if (p) { e.preventDefault(); abrirParceiros(); }
-    if (e.target.closest('[data-fechar-modal]') || e.target.id === 'modalParceiros') fecharParceiros();
   });
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') fecharParceiros(); });
-
-  function abrirParceiros() {
-    const m = $('#modalParceiros'), f = $('iframe', m);
-    if (f.src === 'about:blank') f.src = f.dataset.src;
-    m.hidden = false;
-  }
-  function fecharParceiros() { $('#modalParceiros').hidden = true; }
+  // a janela das empresas parceiras está em parceiros.js
 
   // ---------- Registo ----------
   const fReg = $('#formRegisto');
@@ -179,11 +169,12 @@
         const r = await api('POST', '/registo', {
           nome: f.nome.value, apelido: f.apelido.value, genero: f.genero.value, nascimento: f.nascimento.value,
           telefone: f.telefone.value, cp: f.cp.value, email: f.email.value, categorias: cats,
-          consentimento: f.consentimento.checked, parceiros: f.parceiros.checked
+          consentimento: f.consentimento.checked, parceiros: f.parceiros.checked,
+          empresasParceiras: f.parceiros.checked ? oneParceiros.lista(f.parceiros) : []
         });
         // registo aceite: a lead segue para o Escafandro (keepalive: não se perde ao mudar de vista)
         enviarLead(f, cats);
-        fReg.reset(); seletorReg.set([]);
+        fReg.reset(); seletorReg.set([]); oneParceiros.limpar(fReg.parceiros);
         mostrar('entrar', { email: r.email, novo: true });
       } catch (err) {
         // erro nos dados (ex.: email já registado): não envia a lead
@@ -316,6 +307,7 @@
     ['nome', 'apelido', 'telefone', 'cp', 'email', 'frequencia'].forEach(k => { fPer[k].value = perfil[k] || ''; });
     fPer.alertas.checked = !!perfil.alertas;
     fPer.parceiros.checked = !!perfil.parceiros;
+    oneParceiros.definir(fPer.parceiros, perfil.empresasParceiras);
     seletorPer.set(perfil.categorias);
     mostrarErro($('#erroPerfil'), ''); $('#okPerfil').hidden = true;
   }
@@ -333,7 +325,8 @@
       try {
         const r = await api('PUT', '/perfil', {
           nome: fPer.nome.value, apelido: fPer.apelido.value, telefone: fPer.telefone.value, cp: fPer.cp.value,
-          categorias: cats, alertas: fPer.alertas.checked, frequencia: fPer.frequencia.value, parceiros: fPer.parceiros.checked
+          categorias: cats, alertas: fPer.alertas.checked, frequencia: fPer.frequencia.value, parceiros: fPer.parceiros.checked,
+          empresasParceiras: fPer.parceiros.checked ? oneParceiros.lista(fPer.parceiros) : []
         });
         perfil = r.perfil; $('#okPerfil').hidden = false;
       } catch (err) { mostrarErro($('#erroPerfil'), err.message); }
