@@ -3,6 +3,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Consent Studio (banner de cookies): tem de ser o primeiro script da página -->
+  <script type="text/javascript">
+     /***********************************************
+      * Consent Studio - European CMP
+      * 🇳🇱 Built in the Netherlands
+      * 🇪🇺 100% European-owned infrastructure
+      *
+      * Questions? support@consent.studio
+      * Documentation: https://learn.consent.studio
+      ***********************************************/
+
+     /** Configuration (customize as needed) */
+     window.bakery = window.bakery || {
+        debug: false,
+        force_domain: null
+     };
+
+     /** Load Consent Studio banner */
+     (function() {
+        if (window.bakery._loaded) return; window.bakery._loaded = 1;
+        var script = document.createElement('script');
+        script.src = 'https://consent.studio/' + (window.bakery.force_domain || window.location.hostname) + '/banner.js';
+        document.head.appendChild(script);
+     })();
+  </script>
   <title>Sobre Nós · O Novo Emprego</title>
   <meta name="description" content="O site O NOVO EMPREGO é propriedade da empresa Magnetik Alchemy, no mercado desde 2013.">
   <link rel="icon" type="image/svg+xml" href="../assets/icone.svg">
@@ -76,6 +101,7 @@
       <nav>
         <a href="/sobre-nos/" aria-current="page">Sobre Nós</a>
         <a href="/politica-de-privacidade/">Política de Privacidade</a>
+        <a href="#consent-banner">Gerir cookies</a>
       </nav>
     </div>
   </footer>
