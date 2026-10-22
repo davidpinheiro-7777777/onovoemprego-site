@@ -40,10 +40,10 @@ a { color: var(--azul-600); }
   max-width: 1080px; margin: 0 auto; padding: 14px 16px;
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
 }
-.marca { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--azul-900); }
-.marca-icone { width: 38px; height: 38px; flex: none; }
+.marca { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--azul-900); }
+.marca-icone { width: 46px; height: 46px; flex: none; }
 /* Nome todo a azul, exceto o O, o N e o E, que formam "ONE" */
-.marca-nome { font-size: 15px; font-weight: 700; letter-spacing: .04em; white-space: nowrap; color: var(--azul-600); }
+.marca-nome { font-size: 16px; font-weight: 700; letter-spacing: .04em; white-space: nowrap; color: var(--azul-600); }
 .marca-nome b { font-weight: 800; color: var(--azul-900); }
 .topo-nav { display: flex; align-items: center; gap: 20px; font-size: 14px; font-weight: 600; }
 .topo-nav a { color: var(--texto-2); text-decoration: none; }
@@ -253,8 +253,8 @@ a { color: var(--azul-600); }
   main { padding-top: 22px; }
   .cartao { padding: 22px 18px; border-radius: 16px; }
   .linha-2 { grid-template-columns: 1fr; gap: 0; }
-  .marca-nome { font-size: 13px; }
-  .marca-icone { width: 34px; height: 34px; }
+  .marca-nome { font-size: 14px; }
+  .marca-icone { width: 40px; height: 40px; }
   .topo-nav { gap: 14px; font-size: 13px; }
   .topo-nav a[data-nav="ofertas"] { display: none; }
   .ofertas-topo { flex-direction: column; align-items: flex-start; }
