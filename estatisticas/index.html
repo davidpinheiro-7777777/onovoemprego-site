@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- página privada: sem Pixel, sem aviso de cookies e fora dos motores de busca -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>Estatísticas · O Novo Emprego</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/icone.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/styles.css?v=d5ef3a7">
+  <style>
+    .est-topo { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+    .est-topo h1 { margin: 0; font-size: 26px; color: var(--azul-900); letter-spacing: -.01em; }
+    .est-topo p { margin: 0; color: var(--texto-2); font-size: 13px; }
+    .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-bottom: 16px; }
+    .kpi { background: var(--branco); border: 1px solid var(--linha); border-radius: 16px; padding: 16px 18px; }
+    .kpi b { display: block; font-size: 30px; line-height: 1.1; color: var(--azul-900); font-variant-numeric: tabular-nums; }
+    .kpi span { font-size: 13px; color: var(--texto-2); }
+    .grelha { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+    .painel { background: var(--branco); border: 1px solid var(--linha); border-radius: 16px; padding: 18px 20px; min-width: 0; }
+    .painel.largo { grid-column: 1 / -1; }
+    .painel h2 { margin: 0 0 4px; font-size: 16px; color: var(--azul-900); }
+    .painel .nota { margin: 0 0 14px; font-size: 12px; color: var(--texto-2); }
+    .legenda { display: flex; gap: 16px; font-size: 12px; color: var(--texto-2); margin-bottom: 10px; }
+    .legenda i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 6px; vertical-align: -1px; }
+    .colunas { display: flex; align-items: flex-end; gap: 2px; height: 160px; border-bottom: 1px solid var(--linha); }
+    .coluna { flex: 1; display: flex; flex-direction: column-reverse; gap: 2px; height: 100%; justify-content: flex-start; cursor: default; position: relative; }
+    .coluna span { display: block; border-radius: 4px 4px 0 0; min-height: 0; }
+    .coluna:hover, .coluna:focus { outline: none; background: var(--azul-50); }
+    .eixo { display: flex; justify-content: space-between; font-size: 11px; color: var(--texto-2); margin-top: 6px; }
+    .dica { position: fixed; pointer-events: none; background: var(--azul-900); color: #fff; font-size: 12px; padding: 6px 10px; border-radius: 8px; white-space: nowrap; z-index: 10; }
+    .barras { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+    .barras li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; font-size: 13px; }
+    .barras .nome { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .barras .valor { font-variant-numeric: tabular-nums; color: var(--texto-2); }
+    .barras .trilho { grid-column: 1 / -1; height: 8px; background: var(--azul-50); border-radius: 4px; }
+    .barras .trilho span { display: block; height: 100%; background: var(--azul-600); border-radius: 4px; }
+    .vazio { font-size: 13px; color: var(--texto-2); margin: 0; }
+    .est-acoes { display: flex; gap: 16px; }
+  </style>
+</head>
+<body>
+  <header class="topo">
+    <div class="topo-inner">
+      <a href="/" class="marca" aria-label="O Novo Emprego — início">
+        <svg class="marca-icone" viewBox="0 0 56 56" aria-hidden="true">
+          <rect width="56" height="56" rx="14" fill="#1d5fd6"/>
+          <circle cx="28" cy="28" r="13" fill="none" stroke="#fff" stroke-width="4.5"/>
+          <circle cx="28" cy="28" r="5.5" fill="#93c0fb"/>
+        </svg>
+        <span class="marca-nome"><b>O</b> <b>N</b>OVO <b>E</b>MPREGO</span>
+      </a>
+      <nav class="topo-nav est-acoes">
+        <button type="button" class="link-btn" id="btnActualizar" hidden>Actualizar</button>
+        <button type="button" class="link-btn" id="btnSair" hidden>Sair</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="cartao estreito" id="entrar">
+      <h2>Estatísticas</h2>
+      <p class="sub" id="subEntrar">Página privada. Indica o teu email e enviamos-te um código de entrada.</p>
+      <form id="formEmail">
+        <label class="campo"><span>Email</span>
+          <input type="email" name="email" autocomplete="email" required>
+        </label>
+        <p class="erro-form" id="erroEmail" role="alert"></p>
+        <button class="btn" type="submit">Enviar código</button>
+      </form>
+      <form id="formCodigo" hidden>
+        <label class="campo"><span>Código de 6 dígitos</span>
+          <input name="codigo" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required>
+        </label>
+        <p class="erro-form" id="erroCodigo" role="alert"></p>
+        <button class="btn" type="submit">Entrar</button>
+        <p class="sub" style="margin:14px 0 0"><button type="button" class="link-btn" id="btnOutroEmail">Usar outro email</button></p>
+      </form>
+    </section>
+
+    <section id="painel" hidden>
+      <div class="est-topo">
+        <h1>Estatísticas</h1>
+        <p id="gerado"></p>
+      </div>
+      <div class="kpis" id="kpis"></div>
+      <div class="grelha">
+        <div class="painel largo">
+          <h2>Registos por dia</h2>
+          <p class="nota">Últimos 30 dias. As contas por confirmar desaparecem ao fim de 7 dias.</p>
+          <div class="legenda"><span><i style="background:var(--azul-600)"></i>Confirmados</span><span><i style="background:var(--azul-300)"></i>Por confirmar</span></div>
+          <div class="colunas" id="porDia" role="list"></div>
+          <div class="eixo" id="porDiaEixo"></div>
+        </div>
+        <div class="painel"><h2>Origem dos registos</h2><p class="nota">utm_source · utm_content do link por onde a pessoa chegou.</p><ul class="barras" id="origens"></ul></div>
+        <div class="painel"><h2>Distritos</h2><p class="nota">Utilizadores confirmados.</p><ul class="barras" id="distritos"></ul></div>
+        <div class="painel"><h2>Áreas profissionais</h2><p class="nota">Cada pessoa escolhe até 5.</p><ul class="barras" id="categorias"></ul></div>
+        <div class="painel"><h2>Idade</h2><p class="nota">Utilizadores confirmados.</p><ul class="barras" id="idades"></ul></div>
+        <div class="painel"><h2>Género</h2><p class="nota">Utilizadores confirmados.</p><ul class="barras" id="generos"></ul></div>
+        <div class="painel"><h2>Cliques nas parcerias</h2><p class="nota">Cliques em cada oferta de parceiro, desde o início.</p><ul class="barras" id="parcerias"></ul></div>
+        <div class="painel"><h2>Ofertas por fonte</h2><p class="nota" id="notaOfertas"></p><ul class="barras" id="fontes"></ul></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../assets/config.js?v=d5ef3a7"></script>
+  <script src="../assets/estatisticas.js?v=d5ef3a7"></script>
+</body>
+</html>

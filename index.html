@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Consent Studio (banner de cookies): tem de ser o primeiro script da página -->
+  <script type="text/javascript">
+     /***********************************************
+      * Consent Studio - European CMP
+      * 🇳🇱 Built in the Netherlands
+      * 🇪🇺 100% European-owned infrastructure
+      *
+      * Questions? support@consent.studio
+      * Documentation: https://learn.consent.studio
+      ***********************************************/
+
+     /** Configuration (customize as needed) */
+     window.bakery = window.bakery || {
+        debug: false,
+        force_domain: null
+     };
+
+     /** Load Consent Studio banner */
+     (function() {
+        if (window.bakery._loaded) return; window.bakery._loaded = 1;
+        var script = document.createElement('script');
+        script.src = 'https://consent.studio/' + (window.bakery.force_domain || window.location.hostname) + '/banner.js';
+        document.head.appendChild(script);
+     })();
+  </script>
+  <script src="assets/pixel.js?v=d5ef3a7"></script>
+  <title>O Novo Emprego: ofertas de emprego em Portugal só para ti</title>
+  <meta name="description" content="Juntamos as ofertas de emprego de vários sites e mostramos-te só as da tua zona e da tua área. Recebe-as por email todos os dias. Grátis e sem password.">
+  <link rel="canonical" href="https://onovoemprego.com/">
+  <meta property="og:title" content="O Novo Emprego: ofertas de emprego em Portugal só para ti">
+  <meta property="og:description" content="Juntamos as ofertas de emprego de vários sites e mostramos-te só as da tua zona e da tua área. Recebe-as por email todos os dias. Grátis e sem password.">
+  <meta property="og:url" content="https://onovoemprego.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="O Novo Emprego">
+  <meta property="og:locale" content="pt_PT">
+  <meta property="og:image" content="https://onovoemprego.com/assets/partilha.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#1d5fd6">
+  <link rel="icon" type="image/svg+xml" href="assets/icone.svg">
+  <link rel="apple-touch-icon" href="assets/icone-180.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css?v=d5ef3a7">
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://onovoemprego.com/#site","url":"https://onovoemprego.com/","name":"O Novo Emprego","inLanguage":"pt-PT","publisher":{"@id":"https://onovoemprego.com/#organizacao"}},{"@type":"Organization","@id":"https://onovoemprego.com/#organizacao","name":"O Novo Emprego","url":"https://onovoemprego.com/","logo":{"@type":"ImageObject","url":"https://onovoemprego.com/assets/icone-512.png","width":512,"height":512},"parentOrganization":{"@type":"Organization","name":"Magnetik Alchemy"}},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"O O Novo Emprego é gratuito?","acceptedAnswer":{"@type":"Answer","text":"Sim. Criar o perfil, ver as ofertas e receber os alertas por email não custa nada."}},{"@type":"Question","name":"De onde vêm as ofertas de emprego?","acceptedAnswer":{"@type":"Answer","text":"Juntamos ofertas publicadas em vários sites de emprego em Portugal e actualizamo-las de hora a hora. Quando uma oferta te interessa, candidatas-te directamente no site onde foi publicada."}},{"@type":"Question","name":"Como recebo as ofertas novas?","acceptedAnswer":{"@type":"Answer","text":"Por email, às 9h, todos os dias ou uma vez por semana, como preferires. Só enviamos as ofertas da tua zona e das áreas que escolheste."}},{"@type":"Question","name":"Preciso de criar uma password?","acceptedAnswer":{"@type":"Answer","text":"Não. Para entrares, indicas o teu email e enviamos-te um código de 6 dígitos."}},{"@type":"Question","name":"Posso apagar a minha conta?","acceptedAnswer":{"@type":"Answer","text":"Sim, a qualquer momento, no teu perfil. A conta e os teus dados são apagados."}}]}]}</script>
+</head>
+<body>
+  <header class="topo">
+    <div class="topo-inner">
+      <a href="#" class="marca" data-nav="inicio" aria-label="O Novo Emprego — início">
+        <svg class="marca-icone" viewBox="0 0 56 56" aria-hidden="true">
+          <rect width="56" height="56" rx="14" fill="#1d5fd6"/>
+          <circle cx="28" cy="28" r="13" fill="none" stroke="#fff" stroke-width="4.5"/>
+          <circle cx="28" cy="28" r="5.5" fill="#93c0fb"/>
+        </svg>
+        <span class="marca-nome"><b>O</b> <b>N</b>OVO <b>E</b>MPREGO</span>
+      </a>
+      <nav class="topo-nav" id="navSessao" hidden>
+        <a href="#" data-nav="ofertas">Ofertas</a>
+        <a href="#" data-nav="parcerias" class="nav-destaque">Parcerias</a>
+        <a href="/o-proximo-passo/">O Próximo Passo</a>
+        <a href="#" data-nav="perfil">O meu perfil</a>
+        <a href="/estatisticas/" id="linkEstatisticas" hidden>Estatísticas</a>
+        <button type="button" class="link-btn" id="btnSair">Sair</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOMEPAGE + REGISTO -->
+    <section class="vista" id="vista-inicio">
+      <div class="hero">
+        <p class="hero-tag">Um site de emprego ao contrário</p>
+        <h1>Não procures emprego.<br><span>Deixa que ele te encontre.</span></h1>
+        <p class="hero-copy">Vamos ajudar-te a conseguir um novo emprego, pois apenas vamos mostrar-te ofertas que tenham a ver com o teu perfil. Regista-te e as ofertas virão ter contigo!</p>
+        <ul class="hero-passos">
+          <li><b>1</b> Diz-nos onde vives e o que fazes</li>
+          <li><b>2</b> Juntamos ofertas de todos os sites</li>
+          <li><b>3</b> Só vês as que são para ti</li>
+        </ul>
+      </div>
+
+      <div class="cartao" id="cartaoRegisto">
+        <h2>Cria o teu perfil</h2>
+        <p class="sub">Sem passwords. Demora menos de um minuto.</p>
+
+        <form id="formRegisto" novalidate>
+          <div class="linha-2">
+            <label class="campo"><span>Nome</span><input name="nome" autocomplete="given-name" placeholder="João" required></label>
+            <label class="campo"><span>Apelido</span><input name="apelido" autocomplete="family-name" placeholder="Silva" required></label>
+          </div>
+          <div class="linha-2">
+            <label class="campo"><span>Género</span>
+              <select name="genero" required><option value="">Selecciona</option></select>
+            </label>
+            <label class="campo"><span>Data de Nascimento</span><input name="nascimento" type="date" required></label>
+          </div>
+          <div class="linha-2">
+            <label class="campo"><span>Telefone</span><input name="telefone" type="tel" inputmode="tel" autocomplete="tel" placeholder="9XX XXX XXX" required></label>
+            <label class="campo"><span>Código Postal</span><input name="cp" inputmode="numeric" autocomplete="postal-code" placeholder="1000-001" maxlength="8" required></label>
+          </div>
+          <label class="campo"><span>Email</span><input name="email" type="email" autocomplete="email" placeholder="joao@email.com" required></label>
+
+          <div class="campo" id="campoCategorias">
+            <span>Categorias Profissionais <em class="contador" id="contadorCat">0/5</em></span>
+            <div class="seletor-cat" data-seletor></div>
+          </div>
+
+          <div class="consentimentos">
+            <label class="visto">
+              <input type="checkbox" name="consentimento" required>
+              <span>Confirmo que tenho mais de 18 anos e que autorizo o tratamento dos meus dados para fornecimento das informações solicitadas de acordo com a política de privacidade. <a href="/politica-de-privacidade/" target="_blank" rel="noopener">Ver Política de Privacidade.</a></span>
+            </label>
+            <label class="visto">
+              <input type="checkbox" name="parceiros">
+              <span>Confirmo que tenho mais de 18 anos e autorizo a comunicação dos meus dados às empresas parceiras e empresas terceiras relacionadas com os sectores para que estas procedam ao envio de comunicações comerciais através de e-mail, SMS e/ou chamada telefónica. Pode gerir as empresas parceiras dos sectores <a href="#" data-abrir-parceiros>aqui</a>.</span>
+            </label>
+          </div>
+
+          <p class="erro-form" id="erroRegisto" role="alert" hidden></p>
+          <button class="btn" type="submit">Quero receber ofertas</button>
+          <p class="alterna">Já tens conta? <a href="#" data-nav="entrar">Entra aqui</a></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- Conteúdo público da página inicial (só aparece a quem não tem sessão) -->
+    <div class="inicio-info" id="inicioInfo">
+      <section class="info-bloco">
+        <h2>Como funciona</h2>
+        <div class="info-passos">
+          <div><h3>Diz-nos onde vives e o que fazes</h3><p>Indicas o teu código postal e até 5 áreas profissionais. Demora menos de um minuto e não precisas de password.</p></div>
+          <div><h3>Juntamos as ofertas de vários sites</h3><p>Recolhemos ofertas de emprego publicadas em vários sites em Portugal e actualizamo-las de hora a hora, num só lugar.</p></div>
+          <div><h3>Só vês as que são para ti</h3><p>Mostramos-te apenas as ofertas da tua zona e das tuas áreas, e enviamos-te as novas por email às 9h.</p></div>
+        </div>
+      </section>
+      <section class="info-bloco">
+        <h2>Ofertas de emprego em todas as áreas</h2>
+        <p>Podes escolher até 5 destas áreas profissionais e mudá-las quando quiseres.</p>
+        <ul class="lista-colunas info-lista">
+          <li>Administração / Secretariado</li>
+          <li>Agricultura / Florestas / Pescas</li>
+          <li>Arquitectura / Design</li>
+          <li>Artes / Entretenimento / Media</li>
+          <li>Banca / Seguros / Serviços Financeiros</li>
+          <li>Beleza / Moda / Bem Estar</li>
+          <li>Call Center / Help Desk</li>
+          <li>Comercial / Vendas</li>
+          <li>Comunicação Social / Media</li>
+          <li>Conservação / Manutenção / Técnica</li>
+          <li>Construção Civil</li>
+          <li>Contabilidade / Finanças</li>
+          <li>Desporto / Ginásios</li>
+          <li>Direito / Justiça</li>
+          <li>Educação / Formação</li>
+          <li>Engenharia ( Ambiente )</li>
+          <li>Engenharia ( Civil )</li>
+          <li>Engenharia ( Eletrotecnica )</li>
+          <li>Engenharia ( Mecanica )</li>
+          <li>Engenharia ( Química / Biologia )</li>
+          <li>Farmácia / Biotecnologia</li>
+          <li>Gestão de Empresas / Economia</li>
+          <li>Gestão RH</li>
+          <li>Hotelaria / Turismo</li>
+          <li>Imobiliário</li>
+          <li>Indústria / Produção</li>
+          <li>Informática ( Analise de Sistemas )</li>
+          <li>Informática ( Formação )</li>
+          <li>Informática ( Gestão de Redes )</li>
+          <li>Informática ( Internet )</li>
+          <li>Informática ( Multimedia )</li>
+          <li>Informática ( Programação )</li>
+          <li>Informática ( Técnico de Hardware )</li>
+          <li>Informática (Comercial/Gestor de Conta)</li>
+          <li>Limpezas / Domésticas</li>
+          <li>Lojas / Comércio / Balcão</li>
+          <li>Publicidade / Marketing</li>
+          <li>Relações Públicas</li>
+          <li>Restauração / Bares / Pastelarias</li>
+          <li>Saúde / Medicina / Enfermagem</li>
+          <li>Serviços Sociais</li>
+          <li>Serviços Técnicos</li>
+          <li>Telecomunicações</li>
+          <li>Transportes / Logística</li>
+        </ul>
+      </section>
+      <section class="info-bloco">
+        <h2>Ofertas de emprego em todo o país</h2>
+        <p>Mostramos-te as ofertas do teu distrito, a partir do teu código postal, incluindo as regiões autónomas.</p>
+        <ul class="lista-colunas info-lista info-distritos">
+          <li>Aveiro</li>
+          <li>Beja</li>
+          <li>Braga</li>
+          <li>Bragança</li>
+          <li>Castelo Branco</li>
+          <li>Coimbra</li>
+          <li>Évora</li>
+          <li>Faro</li>
+          <li>Guarda</li>
+          <li>Leiria</li>
+          <li>Lisboa</li>
+          <li>Portalegre</li>
+          <li>Porto</li>
+          <li>Santarém</li>
+          <li>Setúbal</li>
+          <li>Viana do Castelo</li>
+          <li>Vila Real</li>
+          <li>Viseu</li>
+          <li>Açores</li>
+          <li>Madeira</li>
+        </ul>
+      </section>
+      <section class="info-bloco">
+        <h2>Perguntas frequentes</h2>
+        <div class="faq-item">
+          <h3>O O Novo Emprego é gratuito?</h3>
+          <p>Sim. Criar o perfil, ver as ofertas e receber os alertas por email não custa nada.</p>
+        </div>
+        <div class="faq-item">
+          <h3>De onde vêm as ofertas de emprego?</h3>
+          <p>Juntamos ofertas publicadas em vários sites de emprego em Portugal e actualizamo-las de hora a hora. Quando uma oferta te interessa, candidatas-te directamente no site onde foi publicada.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Como recebo as ofertas novas?</h3>
+          <p>Por email, às 9h, todos os dias ou uma vez por semana, como preferires. Só enviamos as ofertas da tua zona e das áreas que escolheste.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Preciso de criar uma password?</h3>
+          <p>Não. Para entrares, indicas o teu email e enviamos-te um código de 6 dígitos.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Posso apagar a minha conta?</h3>
+          <p>Sim, a qualquer momento, no teu perfil. A conta e os teus dados são apagados.</p>
+        </div>
+      </section>
+      <section class="info-bloco">
+        <h2>Dicas para encontrares emprego</h2>
+        <p>N'<a href="/o-proximo-passo/">O Próximo Passo</a> publicamos guias práticos: <a href="/o-proximo-passo/como-fazer-um-bom-cv/">como fazer um bom CV</a>, <a href="/o-proximo-passo/como-estar-numa-entrevista-de-emprego/">como estar numa entrevista de emprego</a>, <a href="/o-proximo-passo/tipos-de-contrato-de-trabalho/">os tipos de contrato de trabalho</a> e muito mais.</p>
+      </section>
+    </div>
+
+    <!-- ENTRAR (código por email) -->
+    <section class="vista" id="vista-entrar" hidden>
+      <div class="cartao estreito">
+        <h2 id="tituloEntrar">Bem-vindo de volta!</h2>
+        <form id="formEmail" novalidate>
+          <p class="sub">Introduz o teu email. Enviamos-te um código para entrares.</p>
+          <label class="campo"><span>Email</span><input name="email" type="email" autocomplete="email" placeholder="joao@email.com" required></label>
+          <p class="erro-form" id="erroEmail" role="alert" hidden></p>
+          <button class="btn" type="submit">Enviar código</button>
+        </form>
+        <form id="formCodigo" novalidate hidden>
+          <p class="sub">Enviámos um código de 6 dígitos para <b id="emailEnviado"></b>.</p>
+          <label class="campo"><span>Código</span><input name="codigo" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="000000" class="input-codigo" required></label>
+          <p class="erro-form" id="erroCodigo" role="alert" hidden></p>
+          <button class="btn" type="submit">Entrar</button>
+          <p class="nota-demo" id="codigoReenviado" hidden>Enviámos um novo código. Vê também a pasta de spam.</p>
+          <p class="alterna">Não recebeste? <a href="#" id="btnReenviar">Reenviar código</a> · <a href="#" id="btnOutroEmail">Usar outro email</a></p>
+        </form>
+        <p class="alterna">Ainda não tens conta? <a href="#" data-nav="inicio">Regista-te aqui</a></p>
+      </div>
+    </section>
+
+    <!-- OFERTAS -->
+    <section class="vista" id="vista-ofertas" hidden>
+      <div class="ofertas-topo">
+        <div>
+          <h2 class="ola">Olá, <span id="olaNome"></span></h2>
+          <p class="resumo" id="resumoOfertas"></p>
+        </div>
+        <a href="#" class="btn-sec" data-nav="perfil">Editar perfil</a>
+      </div>
+      <div class="filtros" id="filtros" role="tablist" aria-label="Filtrar por categoria"></div>
+      <ul class="lista-ofertas" id="listaOfertas"></ul>
+      <div class="vazio" id="semOfertas" hidden>
+        <h3>Ainda não há ofertas para o teu perfil</h3>
+        <p>Estamos sempre à procura. Assim que surgir uma oferta, avisamos-te por email.</p>
+      </div>
+    </section>
+
+    <!-- PARCERIAS (ofertas dos parceiros; a lista está em backend/src/parcerias.js) -->
+    <section class="vista" id="vista-parcerias" hidden>
+      <div class="parcerias-intro">
+        <p class="parcerias-sobre">Parcerias</p>
+        <h2>Dá o próximo passo com a ajuda dos nossos parceiros</h2>
+        <p>Enquanto procuras emprego, há outras coisas que podem fazer a diferença: uma formação certificada, o inglês e as contas da casa. Escolhemos três parceiros que te podem ajudar. Experimentar é grátis e sem compromisso.</p>
+      </div>
+      <div class="parcerias" id="listaParcerias"></div>
+      <div class="vazio" id="semParcerias" hidden>
+        <h3>Em breve</h3>
+        <p>Estamos a preparar ofertas dos nossos parceiros para ti. Volta daqui a uns dias.</p>
+      </div>
+      <p class="parcerias-nota" id="notaParcerias" hidden>Cada parceiro é responsável pela sua oferta e pelos teus dados a partir do momento em que entras no site dele.</p>
+    </section>
+
+    <!-- PERFIL -->
+    <section class="vista" id="vista-perfil" hidden>
+      <div class="cartao">
+        <h2>O meu perfil</h2>
+        <p class="sub">Muda o código postal ou as categorias e as ofertas acompanham.</p>
+        <form id="formPerfil" novalidate>
+          <div class="linha-2">
+            <label class="campo"><span>Nome</span><input name="nome" required></label>
+            <label class="campo"><span>Apelido</span><input name="apelido" required></label>
+          </div>
+          <div class="linha-2">
+            <label class="campo"><span>Telefone</span><input name="telefone" type="tel" required></label>
+            <label class="campo"><span>Código Postal</span><input name="cp" inputmode="numeric" maxlength="8" required></label>
+          </div>
+          <label class="campo"><span>Email</span><input name="email" type="email" disabled></label>
+          <div class="campo">
+            <span>Categorias Profissionais <em class="contador" id="contadorCatPerfil">0/5</em></span>
+            <div class="seletor-cat" data-seletor></div>
+          </div>
+
+          <fieldset class="bloco">
+            <legend>Alertas por email</legend>
+            <label class="interruptor"><input type="checkbox" name="alertas"><span>Avisa-me quando houver ofertas novas</span></label>
+            <label class="campo"><span>Frequência</span>
+              <select name="frequencia"><option value="diaria">Todos os dias</option><option value="semanal">Uma vez por semana</option></select>
+            </label>
+          </fieldset>
+
+          <fieldset class="bloco">
+            <legend>Newsletter</legend>
+            <label class="interruptor"><input type="checkbox" name="newsletter"><span>Quero receber à segunda-feira o resumo dos artigos d'O Próximo Passo</span></label>
+          </fieldset>
+
+          <p class="erro-form" id="erroPerfil" role="alert" hidden></p>
+          <p class="ok-form" id="okPerfil" role="status" hidden>Perfil guardado.</p>
+          <button class="btn" type="submit">Guardar alterações</button>
+        </form>
+        <div class="zona-perigo">
+          <button type="button" class="link-btn perigo" id="btnApagar">Apagar a minha conta e os meus dados</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="rodape-inner">
+      <span>© <span id="ano"></span> O Novo Emprego</span>
+      <nav>
+        <a href="/o-proximo-passo/">O Próximo Passo</a>
+        <a href="/sobre-nos/">Sobre Nós</a>
+        <a href="/politica-de-privacidade/">Política de Privacidade</a>
+        <a href="#consent-banner">Gerir cookies</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Escolha das empresas parceiras (2.º visto): ver assets/parceiros.js -->
+  <div class="modal" id="modalParceiros" hidden>
+    <div class="modal-caixa parceiros" role="dialog" aria-modal="true" aria-labelledby="parceirosTitulo">
+      <button type="button" class="modal-fechar" data-fechar-modal aria-label="Fechar sem alterar">×</button>
+      <h2 id="parceirosTitulo">Escolha as opções de informação e publicidade deste site e dos seus parceiros</h2>
+      <p class="parceiros-ajuda">Escolha os sectores ou as empresas de quem aceita receber comunicações. Toque na seta para ver as empresas de cada sector.</p>
+      <div class="parceiros-arvore" id="arvoreParceiros"></div>
+      <button type="button" class="btn parceiros-ok" id="btnParceirosOk">OK</button>
+    </div>
+  </div>
+
+  <script src="assets/config.js?v=d5ef3a7"></script>
+  <script src="assets/lead.js?v=d5ef3a7"></script>
+  <script src="assets/parceiros.js?v=d5ef3a7"></script>
+  <script src="assets/dados.js?v=d5ef3a7"></script>
+  <script src="assets/app.js?v=d5ef3a7"></script>
+</body>
+</html>

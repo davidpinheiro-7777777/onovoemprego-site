@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Consent Studio (banner de cookies): tem de ser o primeiro script da página -->
+  <script type="text/javascript">
+     /***********************************************
+      * Consent Studio - European CMP
+      * 🇳🇱 Built in the Netherlands
+      * 🇪🇺 100% European-owned infrastructure
+      *
+      * Questions? support@consent.studio
+      * Documentation: https://learn.consent.studio
+      ***********************************************/
+
+     /** Configuration (customize as needed) */
+     window.bakery = window.bakery || {
+        debug: false,
+        force_domain: null
+     };
+
+     /** Load Consent Studio banner */
+     (function() {
+        if (window.bakery._loaded) return; window.bakery._loaded = 1;
+        var script = document.createElement('script');
+        script.src = 'https://consent.studio/' + (window.bakery.force_domain || window.location.hostname) + '/banner.js';
+        document.head.appendChild(script);
+     })();
+  </script>
+  <script src="/assets/pixel.js?v=d5ef3a7"></script>
+  <title>Página não encontrada · O Novo Emprego</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" type="image/svg+xml" href="/assets/icone.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/styles.css?v=d5ef3a7">
+</head>
+<body>
+  <header class="topo">
+    <div class="topo-inner">
+      <a href="/" class="marca" aria-label="O Novo Emprego — início">
+        <svg class="marca-icone" viewBox="0 0 56 56" aria-hidden="true">
+          <rect width="56" height="56" rx="14" fill="#1d5fd6"/>
+          <circle cx="28" cy="28" r="13" fill="none" stroke="#fff" stroke-width="4.5"/>
+          <circle cx="28" cy="28" r="5.5" fill="#93c0fb"/>
+        </svg>
+        <span class="marca-nome"><b>O</b> <b>N</b>OVO <b>E</b>MPREGO</span>
+      </a>
+      <nav class="topo-nav">
+        <a href="/">Voltar ao início</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="cartao pagina-texto">
+      <h1>Esta página não existe</h1>
+      <p>O endereço pode estar errado ou a página pode ter mudado de sítio.</p>
+      <p><a class="btn" href="/">Ver ofertas de emprego para mim</a></p>
+      <p>Ou lê os nossos guias n'<a href="/o-proximo-passo/">O Próximo Passo</a>.</p>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="rodape-inner">
+      <span>© <span id="ano"></span> O Novo Emprego</span>
+      <nav>
+        <a href="/o-proximo-passo/">O Próximo Passo</a>
+        <a href="/sobre-nos/" aria-current="page">Sobre Nós</a>
+        <a href="/politica-de-privacidade/">Política de Privacidade</a>
+        <a href="#consent-banner">Gerir cookies</a>
+      </nav>
+    </div>
+  </footer>
+  <script>document.getElementById('ano').textContent = new Date().getFullYear();</script>
+</body>
+</html>
